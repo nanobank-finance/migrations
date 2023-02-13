@@ -13,7 +13,7 @@ def user_thread():
         time.sleep(random.random())
         user.tick()
 
-if __name__ == "__main__":
+def run():
 
     count_users = 5
 
@@ -30,3 +30,9 @@ if __name__ == "__main__":
     
     # collect data about the run
     user_activity.UserActivity.create_csv()
+
+if __name__ == "__main__":
+
+    import nano
+    nano.create_account()
+    

@@ -1,20 +1,32 @@
-from nanoblocks.network import NanoNetwork
 import schemas
+import requests
 
-network = NanoNetwork()
+nano_currency = "http://127.0.0.1:17076"
+session = requests.Session()
 
-def get_address() -> str:
-    # https://github.com/ipazc/nanoblocks
+""" lower level utilities """
 
-    # create the wallet, each wallet can store 2^32 accounts
-    wallet = network.wallets.create()
+def create_account():
+    # https://docs.nano.org/commands/rpc-protocol/#account_create
+    response = session.post(nano_currency, json={
+        "action": "telemetry"
+    })
 
-    # create the account
-    account_0 = wallet.accounts[0]
-    # account_0_private_key = account_0.private_key
-    
+    print(response.__dict__)
 
-    return ' '.join(wallet.mnemonic)
+def transfer(address_to, address_from):
+    # https://docs.nano.org/commands/rpc-protocol/#send
+    pass
+
+def get_balance(address):
+    # https://docs.nano.org/commands/rpc-protocol/#wallet_balances
+    pass
+
+def get_transaction_history(address):
+    # https://docs.nano.org/commands/rpc-protocol/#wallet_history
+    pass
+
+""" higher level utilities """
 
 def test_faucet_deposit(wallet: schemas.Wallet):
     pass
@@ -23,7 +35,4 @@ def test_faucet_withdraw(wallet: schemas.Wallet):
     pass
 
 def cleanup_test_wallets():
-    pass
-
-def transfer():
     pass
