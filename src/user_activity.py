@@ -2,7 +2,7 @@ from __future__ import annotations
 import crud
 import schemas
 import state_changes
-import nano
+import nano as nano
 import random
 from enum import Enum
 import os
