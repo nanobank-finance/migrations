@@ -80,9 +80,3 @@ def key_expand(private_key: str) -> Union[str, None]:
         return
     
     return public_key
-    
-
-def wallet_add(wallet_id: str):
-    from . import crypto
-    private_key = crypto.generate_private_key()
-    public_key = key_expand(private_key)

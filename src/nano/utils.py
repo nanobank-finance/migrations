@@ -1,32 +1,13 @@
 from . import rpc
+from . import crypto
 
 def create_account():
 
     wallet_id = rpc.wallet_create()
     accounts_id = rpc.accounts_create(wallet_id, 2)
-    rpc.wallet_add(wallet_id)
 
-    # # get the wallet address
-
-    # response = session.post(nano_currency, json={
-    #     "action": "account_get",  
-    #     "key": wallet
-    # }).json()
-
-    # try:
-    #     account = response["account"]
-    # except KeyError:
-    #     logging.exception(response["error"])
-    #     return
-    
-    # add the wallet
-
-    # response = session.post(nano_currency, json={
-    #     "action": "wallet_add",
-    #     "wallet": wallet_id,
-    #     "key": account
-    # }).json()
-
+    private_key = crypto.generate_private_key()
+    public_key = rpc.key_expand(private_key)
 
 def transfer(address_to, address_from):
     # https://docs.nano.org/commands/rpc-protocol/#send
