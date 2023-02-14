@@ -33,6 +33,6 @@ def run():
 
 if __name__ == "__main__":
 
-    import nano as nano
-    nano.create_account()
+    from nano import utils
+    utils.create_account()
     
